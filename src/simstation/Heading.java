@@ -1,8 +1,9 @@
 /**
  * Edit History
- * 4/6 edited by Solbi You
- * 4/8 edited by Solbi You "Add random method"
+ * 4/6 Solbi You: file created
+ * 4/8 Solbi You: Add random method
  */
+
 package simstation;
 
 import mvc.Utilities;
