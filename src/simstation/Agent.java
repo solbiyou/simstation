@@ -7,6 +7,7 @@ package simstation;
 
 import java.io.*;
 import java.util.*;
+
 import mvc.*;
 
 abstract class Agent implements Runnable, Serializable {
@@ -113,6 +114,13 @@ abstract class Agent implements Runnable, Serializable {
 			yc -= steps; 
 		}
 		world.changed();
+	}
+
+	public double distance(Agent agent) {
+		double xdistance = this.xc - agent.xc;
+		double ydistance = this.yc - agent.yc;
+		double dist = Math.sqrt(xdistance*xdistance + ydistance*ydistance);
+		return dist;
 	}
 }
 
