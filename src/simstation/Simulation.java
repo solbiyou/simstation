@@ -63,7 +63,7 @@ public class Simulation extends Model {
 	}
 	
 	public void resume() {
-		resumeTimer();
+		startTimer();
 		for(int i=0; i < agents.size(); i++) {
 			agents.get(i).resume();
 		}
@@ -89,10 +89,6 @@ public class Simulation extends Model {
 	//methods for timer
 	private void startTimer() {
 		timer = new Timer();
-		timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
-	}
-	
-	private void resumeTimer() {
 		timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
 	}
 
