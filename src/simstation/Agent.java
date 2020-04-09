@@ -1,6 +1,7 @@
 /**
  * Edit History
- * 4/7 edited by Solbi You
+ * 4/7 Solbi You: created
+ * 4/8 Solbi You: update move method
  */
 package simstation;
 
@@ -98,10 +99,18 @@ abstract class Agent implements Runnable, Serializable {
 	}
 	
 	//moving 
-	void move(int xsteps, int ysteps) {
-		for (int i = 0; i < world.agents.size(); i++) {
-			world.agents.get(i).xc += xsteps;
-			world.agents.get(i).yc += ysteps;
+	void move(int steps) {
+		if(heading == Heading.EAST) {
+			xc += steps;
+		}
+		else if(heading == Heading.WEST) {
+			xc -= steps;
+		}
+		else if(heading == Heading.NORTH) {
+			yc += steps;
+		}
+		else {
+			yc -= steps; 
 		}
 		world.changed();
 	}
