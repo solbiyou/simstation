@@ -3,6 +3,7 @@
  * 4/7 Solbi You: file created
  * 4/8 Solbi You: add the methods for timer
  * 4/8 Solbi You: add command methods
+ * 4/9 Solbi You: add getStats method
  */
 package simstation;
 
@@ -72,6 +73,12 @@ public class Simulation extends Model {
 		for(int i=0; i < agents.size(); i++) {
 			agents.get(i).stop();
 		}
+	}
+	
+	public String getStats() {
+		String stats;
+		stats = "#agents = " + agents.size() + "\nclock = " + clock;
+		return stats;
 	}
 	
 	//empty method that will be specified in subclasses

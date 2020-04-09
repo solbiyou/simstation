@@ -2,6 +2,7 @@
  * Edit History
  * 4/7 Solbi You: created
  * 4/8 Solbi You: update move method
+ * 4/9 Solbi You: add distance method
  */
 package simstation;
 
