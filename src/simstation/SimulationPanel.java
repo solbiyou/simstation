@@ -6,9 +6,7 @@ package simstation;
 
 import java.awt.*;
 import javax.swing.*;
-
 import mvc.*;
-
 
 public class SimulationPanel extends AppPanel {
 
