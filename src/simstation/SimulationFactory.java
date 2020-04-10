@@ -58,7 +58,7 @@ public class SimulationFactory implements AppFactory {
 
 	@Override 
 	public String about() { 
-		String aboutString = "SimStation Version 1.0 Copyright 2020 by Katrina Slivkoff and Solbi You"; //Set the about return string
+		String aboutString = "SimStation Version 1.0 Copyright 2020 by Katrina Slivkoff and Solbi You";
 		return aboutString; 
 	}
 }
