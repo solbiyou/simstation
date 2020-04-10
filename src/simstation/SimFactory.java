@@ -1,9 +1,12 @@
 /**
  * Edit History
- * 
+ * 4/10 Katrina Slivkoff created getView method
  */
 package simstation;
 
-public class SimFactory {
+import mvc.*;
+
+public interface SimFactory extends AppFactory{
+	public View getView(Model model);
 
 }
