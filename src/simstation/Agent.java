@@ -17,7 +17,8 @@ abstract class Agent implements Runnable, Serializable {
 	private Thread thread;
 	private Heading heading;
 	private Simulation world;
-	private Integer xc, yc;
+	protected Integer xc;
+	protected Integer yc;
 
 	public Agent(String name) {
 		this.name = name;

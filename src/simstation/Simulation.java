@@ -104,6 +104,10 @@ public class Simulation extends Model {
     	}
     }
 
+	public List<Agent> getAgents() {
+		return agents;
+	}
+
 	
 	
 }
