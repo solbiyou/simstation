@@ -1,26 +1,27 @@
 /**
  * Edit History
  * 4/10 Katrina Slivkoff updated methods makeModel, makePanel, commands, title, help, and about
+ * 4/12 Solbi You deleted type attribute
  */
 package simstation;
 
 import mvc.*;
 
-public class SimulationFactory implements AppFactory {
+public class SimulationFactory implements SimFactory {
 	
-	private String type;
+	//private String type;
 
 	@Override 
 	public Model makeModel() { 
 		Simulation sim = new Simulation(); 
 		return sim;
 	}
-
+	/*
 	@Override 
 	public AppPanel makePanel(AppFactory factory) {
 		return new SimulationPanel(factory);
 	}
-
+	*/
 	@Override 
 	public String[] getEditCommands() { 
 		String[] editCommands = {"Start", "Suspend", "Resume", "Stop", "Stats"};
@@ -28,7 +29,7 @@ public class SimulationFactory implements AppFactory {
 	}
 
 	@Override 
-	public Command makeEditCommand(Model model, String command) { 
+	public Command makeEditCommand(Model model, String type) { 
 		if(type == "Start") {
 			return new StartCommand(model);
 		}else if(type == "Suspend") {
@@ -60,5 +61,9 @@ public class SimulationFactory implements AppFactory {
 	public String about() { 
 		String aboutString = "SimStation Version 1.0 Copyright 2020 by Katrina Slivkoff and Solbi You";
 		return aboutString; 
+	}
+	@Override
+	public View getView(Model model) {
+		return null;
 	}
 }
