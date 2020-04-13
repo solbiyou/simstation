@@ -1,9 +1,29 @@
 /**
  * Edit History
- * 
+ * 4/12 Solbi You Update Boid.java
  */
 package boid;
 
-public class Boid {
+import mvc.*;
+import simstation.*;
 
-}
+public class Boid extends Agent {
+	private int speed;
+	
+	public Boid() {
+		super("boid");
+		speed = Utilities.rng.nextInt(5) + 1;
+	}
+	//public void update
+	public void update() {
+		Boid neighbor = (Boid)world.getNeighbor(this, 10.0);
+		if (neighbor != null) {
+			heading = neighbor.getHeading();
+			speed = neighbor.getSpeed();
+		}
+		move(speed);
+	}
+	public int getSpeed() {
+		return this.speed;
+	}
+ }

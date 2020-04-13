@@ -4,6 +4,7 @@
  * 4/8 Solbi You: add the methods for timer
  * 4/8 Solbi You: add command methods
  * 4/9 Solbi You: add getStats method
+ * 4/12 Solbi You: set World as add agents
  */
 package simstation;
 
@@ -23,6 +24,7 @@ public class Simulation extends Model {
 	
 	public void addAgent(Agent a) {
 		agents.add(a);
+		a.setWorld(this);
 	}
 	
 	public synchronized Agent getNeighbor(Agent thisAgent, double radius) {
@@ -82,9 +84,7 @@ public class Simulation extends Model {
 	}
 	
 	//empty method that will be specified in subclasses
-	public void populate() {
-		
-	}
+	public void populate() {}
 	
 	//methods for timer
 	private void startTimer() {
