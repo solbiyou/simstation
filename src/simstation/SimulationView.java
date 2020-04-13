@@ -24,8 +24,9 @@ public class SimulationView extends View {
 		Color oldColor = gc.getColor();
 		gc.setColor(Color.RED);
 		List<Agent> list = simulation.getAgents();
-    
+		gc.drawRect(0, 0, 10, 10);
 		for (Agent agent: list) {
+			gc.setColor(Color.RED);
 			gc.fillOval(agent.xc, agent.yc, 5, 5);
 		}
 

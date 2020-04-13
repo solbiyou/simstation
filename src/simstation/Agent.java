@@ -3,6 +3,7 @@
  * 4/7 Solbi You: created
  * 4/8 Solbi You: update move method
  * 4/9 Solbi You: add distance method
+ * 4/12 Solbi You: add conditions in move method
  */
 package simstation;
 
@@ -11,14 +12,14 @@ import java.util.*;
 
 import mvc.*;
 
-abstract class Agent implements Runnable, Serializable {
+public abstract class Agent implements Runnable, Serializable {
 	private String name;
 	private AgentState state;
 	private Thread thread;
-	private Heading heading;
-	private Simulation world;
-	protected Integer xc;
-	protected Integer yc;
+	protected Heading heading;
+	protected Simulation world;
+	protected int xc;
+	protected int yc;
 
 	public Agent(String name) {
 		this.name = name;
@@ -75,7 +76,8 @@ abstract class Agent implements Runnable, Serializable {
 	}
 	
 	public synchronized void join() throws InterruptedException {
-		if (thread != null) thread.join();
+		if (thread != null) 
+			thread.join();
 	}
 	
 	public synchronized String toString() { return name + ".state = " + state; }
@@ -84,7 +86,7 @@ abstract class Agent implements Runnable, Serializable {
 	public abstract void update();
 	
 	public void run() {
-		thread = Thread.currentThread(); // catch my thread
+		//thread = Thread.currentThread(); // catch my thread
 		while(!isStopped()) {
 			state = AgentState.RUNNING;
 			update();
@@ -102,18 +104,30 @@ abstract class Agent implements Runnable, Serializable {
 	}
 	
 	//moving 
-	void move(int steps) {
+	protected void move(int steps) {
 		if(heading == Heading.EAST) {
 			xc += steps;
+			if(xc >= Simulation.SIZE) {
+				xc = 0;
+			}
 		}
 		else if(heading == Heading.WEST) {
 			xc -= steps;
+			if(xc <= 0) {
+				xc = Simulation.SIZE;
+			}
 		}
 		else if(heading == Heading.NORTH) {
 			yc += steps;
+			if(yc >= Simulation.SIZE) {
+				yc = 0;
+			}
 		}
 		else {
 			yc -= steps; 
+			if(yc <= 0) {
+				yc = Simulation.SIZE;
+			}
 		}
 		world.changed();
 	}
@@ -123,6 +137,10 @@ abstract class Agent implements Runnable, Serializable {
 		double ydistance = this.yc - agent.yc;
 		double dist = Math.sqrt(xdistance*xdistance + ydistance*ydistance);
 		return dist;
+	}
+
+	public void setWorld(Simulation simulation) {
+		world = simulation;
 	}
 }
 
