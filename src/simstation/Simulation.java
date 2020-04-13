@@ -34,12 +34,13 @@ public class Simulation extends Model {
 		int start = i;
 		
 		while (!found) {
-			Agent candidate = agents.get(i);
-			if (candidate != thisAgent && thisAgent.distance(candidate) < dist) {
-				neighbor = agents.get(i);
+			Agent randAgent = agents.get(i);
+			if (randAgent != thisAgent && thisAgent.distance(randAgent) < dist) {
+				neighbor = randAgent;
 				found = true;
 			}
-			else {
+			else 
+			{
 				i = (i + 1) % agents.size();
 				//if it went through all the agents
 				if (i == start) 
