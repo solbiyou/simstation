@@ -12,13 +12,13 @@ public class Boid extends Agent {
 	
 	public Boid() {
 		super("boid");
-		speed = Utilities.rng.nextInt(5) + 1;
+		speed = Utilities.rng.nextInt(6) + 1;
 	}
 	//public void update
 	public void update() {
-		Boid neighbor = (Boid)world.getNeighbor(this, 10.0);
+		Boid neighbor = (Boid)this.getWorld().getNeighbor(this, 15);
 		if (neighbor != null) {
-			heading = neighbor.getHeading();
+			setHeading(neighbor.getHeading());
 			speed = neighbor.getSpeed();
 		}
 		move(speed);

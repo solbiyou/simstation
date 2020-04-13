@@ -4,7 +4,7 @@
  * 4/12 Solbi You: add populate method
  */
 package simstation;
-import boid.BoidSimulation;
+
 import mvc.*;
 
 public class StartCommand extends Command {

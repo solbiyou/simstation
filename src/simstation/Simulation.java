@@ -27,7 +27,7 @@ public class Simulation extends Model {
 		a.setWorld(this);
 	}
 	
-	public synchronized Agent getNeighbor(Agent thisAgent, double radius) {
+	public synchronized Agent getNeighbor(Agent thisAgent, double dist) {
 		Agent neighbor = null;
 		boolean found = false;
 		int i = Utilities.rng.nextInt(agents.size());
@@ -35,10 +35,10 @@ public class Simulation extends Model {
 		
 		while (!found) {
 			Agent candidate = agents.get(i);
-			if (candidate != thisAgent && thisAgent.distance(candidate) < radius) {
+			if (candidate != thisAgent && thisAgent.distance(candidate) < dist) {
 				neighbor = agents.get(i);
 				found = true;
-			} 
+			}
 			else {
 				i = (i + 1) % agents.size();
 				//if it went through all the agents
@@ -72,6 +72,7 @@ public class Simulation extends Model {
 	}
 	
 	public void stop() {
+		stopTimer();
 		for(int i=0; i < agents.size(); i++) {
 			agents.get(i).stop();
 		}

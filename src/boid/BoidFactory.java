@@ -9,7 +9,7 @@ import mvc.*;
 
 public class BoidFactory extends SimulationFactory{
 	public Model makeModel() {
-		return new BoidSimulation();
+		BoidSimulation boid = new BoidSimulation();
+		return boid;
 	}
-	
 }

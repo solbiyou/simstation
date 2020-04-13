@@ -16,10 +16,10 @@ public abstract class Agent implements Runnable, Serializable {
 	private String name;
 	private AgentState state;
 	private Thread thread;
-	protected Heading heading;
-	protected Simulation world;
-	protected int xc;
-	protected int yc;
+	private Heading heading;
+	private Simulation world;
+	private int xc;
+	private int yc;
 
 	public Agent(String name) {
 		this.name = name;
@@ -63,16 +63,27 @@ public abstract class Agent implements Runnable, Serializable {
 	}
 	
 	//getters
-	public String getName() { 
-		return name; 
+	public int getXc() {
+		return xc;
 	}
-	
-	public synchronized AgentState getState() { 
-		return state; 
+
+	public int getYc() {
+		return yc;
+	}
+	public Simulation getWorld() {
+		return world;
 	}
 	
 	public synchronized Heading getHeading() { 
 		return heading; 
+	}
+	
+	//setters
+	public void setWorld(Simulation simulation) {
+		world = simulation;
+	}
+	public void setHeading(Heading heading) {
+		this.heading = heading;
 	}
 	
 	public synchronized void join() throws InterruptedException {
@@ -80,7 +91,7 @@ public abstract class Agent implements Runnable, Serializable {
 			thread.join();
 	}
 	
-	public synchronized String toString() { return name + ".state = " + state; }
+	//public synchronized String toString() { return name + ".state = " + state; }
 	
 	//abstract method for customization
 	public abstract void update();
@@ -138,9 +149,7 @@ public abstract class Agent implements Runnable, Serializable {
 		double dist = Math.sqrt(xdistance*xdistance + ydistance*ydistance);
 		return dist;
 	}
+	
 
-	public void setWorld(Simulation simulation) {
-		world = simulation;
-	}
 }
 

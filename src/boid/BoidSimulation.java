@@ -8,7 +8,7 @@ import simstation.*;
 
 public class BoidSimulation extends Simulation {
 	public void populate() {
-		super.populate();
+		//super.populate();
 		for(int i = 0; i < 50; i++) {
 			addAgent(new Boid());
 		}
