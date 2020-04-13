@@ -1,6 +1,6 @@
 /**
  * Edit History
- * 4/14 Solbi You Upatate BoidSimulation.java
+ * 4/12 Solbi You Update BoidSimulation.java
  */
 package boid;
 import mvc.AppPanel;
