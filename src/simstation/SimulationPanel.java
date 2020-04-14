@@ -1,6 +1,7 @@
 /**
  * Edit History
  * 4/10 Katrina Slivkoff created the simulation panel with buttons
+ * 4/13 Solbi You modified to get view from factory by calling getView method
  */
 package simstation;
 
@@ -57,7 +58,9 @@ public class SimulationPanel extends AppPanel {
 		buttonPanel.add(buttons, "North");
 		this.add(buttonPanel, "West");
 		
-		SimulationView view = new SimulationView((Simulation)model);
+		SimulationView view = (SimulationView)((SimulationFactory) factory).getView(model);
+		//SimulationView view = new SimulationView((Simulation)model);
+		
 		this.add(view, "East");
 	}
 	
