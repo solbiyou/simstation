@@ -5,6 +5,7 @@
  * 4/8 Solbi You: add command methods
  * 4/9 Solbi You: add getStats method
  * 4/12 Solbi You: set World as add agents
+ * 4/13 Solbi You: add changed() method in each commands
  */
 package simstation;
 
@@ -56,6 +57,7 @@ public class Simulation extends Model {
 		for(int i=0; i < agents.size(); i++) {
 			agents.get(i).start();
 		}
+		changed();
 	}
 	
 	public void suspend() {
@@ -63,6 +65,7 @@ public class Simulation extends Model {
 		for(int i=0; i < agents.size(); i++) {
 			agents.get(i).suspend();
 		}
+		changed();
 	}
 	
 	public void resume() {
@@ -70,6 +73,7 @@ public class Simulation extends Model {
 		for(int i=0; i < agents.size(); i++) {
 			agents.get(i).resume();
 		}
+		changed();
 	}
 	
 	public void stop() {
@@ -77,6 +81,7 @@ public class Simulation extends Model {
 		for(int i=0; i < agents.size(); i++) {
 			agents.get(i).stop();
 		}
+		changed();
 	}
 	
 	public String getStats() {
@@ -102,7 +107,7 @@ public class Simulation extends Model {
     private class ClockUpdater extends TimerTask {
     	public void run() {
     		clock++;
-    		//changed();
+    		changed();
     	}
     }
 
