@@ -2,10 +2,13 @@
  * Edit History
  * 4/10 Katrina Slivkoff updated methods makeModel, makePanel, commands, title, help, and about
  * 4/12 Solbi You deleted type attribute
+ * 4/13 Solbi You update getView method
  */
 package simstation;
 
 import mvc.*;
+import plague.PlagueSimulation;
+import plague.PlagueView;
 
 public class SimulationFactory implements SimFactory {
 	
@@ -64,6 +67,7 @@ public class SimulationFactory implements SimFactory {
 	}
 	@Override
 	public View getView(Model model) {
-		return null;
+		SimulationView view = new SimulationView((Simulation) model);
+		return view;
 	}
 }
