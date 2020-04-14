@@ -1,7 +1,8 @@
 /**
  * Edit History
  * 4/13 Solbi You implemented Plague class. update method not finished yet
- * 4/13 Solbi You finished update method
+ * 4/13 Solbi You implemented update method
+ * 4/14 Solbi You changed the logic in update method
  */
 package plague;
 
@@ -19,7 +20,7 @@ public class Plague extends Agent {
 		if(randPctNum < PlagueSimulation.VIRULENCE) {
 			isInfected = true;
 			synchronized(this) {
-				Plague.infectedPct += (double)100/PlagueSimulation.AGENT_NUM;
+				Plague.infectedPct += (double)100/PlagueSimulation.AGENT_NUM;	//increase the percentage when the agent gets infected
 			}
 		}
 		else {
@@ -32,18 +33,13 @@ public class Plague extends Agent {
 	public void update() {
 		Plague neighbor = (Plague)this.getWorld().getNeighbor(this, 15);
 		int randPctNum = Utilities.rng.nextInt(100) + 1;
-		if (neighbor != null && neighbor.isInfected) {
-			if(!isInfected) {
+		if (neighbor != null) {
+			// if the neighbor is infected and this agent is not yet infected then this agent gets infected unless it resists
+			if(!isInfected && neighbor.isInfected && randPctNum > PlagueSimulation.RESISTANCE) {
 				synchronized(this) {
-					Plague.infectedPct += (double)100/PlagueSimulation.AGENT_NUM;
-				}
-			}
-			isInfected = true;
-			if(randPctNum < PlagueSimulation.RESISTANCE && !neighbor.isInfected()) {
-				isInfected = false;
-				synchronized(this) {
-					Plague.infectedPct -= (double)100/PlagueSimulation.AGENT_NUM;
-				}
+					Plague.infectedPct += (double)100/PlagueSimulation.AGENT_NUM;	//increase the percentage when the agent gets infected
+					isInfected = true;
+				}	
 			}
 		}
 		setHeading(Heading.random());
