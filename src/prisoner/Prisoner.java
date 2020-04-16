@@ -1,3 +1,8 @@
+/**
+ * Edit History 
+ * 4/15 Katrina Slivkoff implemented the getters/setters and update method
+ */
+
 package prisoner;
 
 import mvc.Utilities;
