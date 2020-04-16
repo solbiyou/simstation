@@ -6,6 +6,7 @@
  * 4/9 Solbi You: add getStats method
  * 4/12 Solbi You: set World as add agents
  * 4/13 Solbi You: add changed() method in each commands
+ * 4/15 Katrina Slivkoff: changed agents and clock to protected
  */
 package simstation;
 
@@ -14,8 +15,8 @@ import java.util.*;
 
 public class Simulation extends Model {
 	public static int SIZE = 250;
-	private List<Agent> agents;
-	private int clock;
+	protected List<Agent> agents;
+	protected int clock;
 	private Timer timer;
 	
 	public Simulation() {
