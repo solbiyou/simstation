@@ -1,3 +1,8 @@
+/**
+ * Edit History 
+ * 4/15 Katrina Slivkoff created the RandomlyCooperate class that implements Strategy
+ */
+
 package prisoner;
 
 import java.util.Random;
