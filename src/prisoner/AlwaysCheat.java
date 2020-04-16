@@ -1,3 +1,9 @@
+/**
+ * Edit History 
+ * 4/15 Katrina Slivkoff created the AlwaysCheat class that implements Strategy
+ * 
+ */
+
 package prisoner;
 
 public class AlwaysCheat implements Strategy {
