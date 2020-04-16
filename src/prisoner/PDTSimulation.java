@@ -5,6 +5,7 @@
 
 package prisoner;
 
+import java.util.ArrayList;
 import mvc.AppPanel;
 import simstation.*;
 
